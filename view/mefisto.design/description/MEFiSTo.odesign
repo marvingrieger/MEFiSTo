@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="MEFiSTo" version="10.0.0.201505222000">
+  <ownedViewpoints name="MEFiSTo">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Horseshoe Model" domainClass="pattern.TransformationPhaseFragment" enablePopupBars="true">
+      <validationSet name="MEFiSTo">
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="No input has been defined for this activity" targetClass="fragment.Activity">
+          <audits auditExpression="aql:not (self.subActivity->isEmpty()) or not (self.input->isEmpty())"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="No output has been defined for this activity" targetClass="fragment.Activity">
+          <audits auditExpression="aql:not (self.subActivity->isEmpty()) or not (self.output->isEmpty())"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="The artifact is not used as an input" targetClass="fragment.Artifact">
+          <audits auditExpression="aql:not (self.subArtifact->isEmpty()) or not (self.inputTo->isEmpty()) or (self.eClass().name='LegacySourceCode' and self.getsRemoved) or (self.eClass().name='TransformedSourceCode')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="Model Discovery can only output an LPSM" targetClass="transformation.ModelDiscovery">
+          <audits auditExpression="aql:self.output->forAll(inp | inp.eClass().name = 'LPSM')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="The input to Model Discovery can only be Legacy Source Code, a System or a Platform" targetClass="transformation.ModelDiscovery">
+          <audits auditExpression="aql:self.input->forAll(inp | inp.eClass().name = 'LegacySourceCode' or inp.eClass().name = 'System' or inp.eClass().name = 'Platform')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="This artifact is not an output of any activity" targetClass="fragment.Artifact">
+          <audits auditExpression="aql:not (self.subArtifact->isEmpty()) or not (self.outputFrom->isEmpty()) or (self.eClass().name='LegacySourceCode') or (self.eClass().name='System') or (self.eClass().name='Platform')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="Language Transformation can only output a TPSM" targetClass="transformation.LanguageTransformation">
+          <audits auditExpression="aql:self.output->forAll(inp | inp.eClass().name = 'TPSM')"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <edgeMappings name="Inner Activity Input" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Artifact']/@subNodeMappings[name='Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Artifact']" targetFinderExpression="feature:input">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Inner Activity Output" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Artifact']/@subNodeMappings[name='Artifact']" targetFinderExpression="feature:output">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Activity Successor" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity']" targetFinderExpression="feature:predecessor">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Outer Activity" semanticCandidatesExpression="feature:methodFragment" domainClass="fragment.Activity">
+          <subNodeMappings name="Activity" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="fragment.Activity">
+            <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="8">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='Automatic'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivityAutomatic.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='Manual'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivityManual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='SemiAutomatic'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivitySemiAutomatic.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <style xsi:type="style:ShapeContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('Discovery',' Discovery').replace('Comprehension',' Comprehension').replace('Generation',' Generation').replace('Transformation',' Transformation').replace('PlatformDependentArchitectureRecovery',' Platform-Dependent Architecture Recovery').replace('ArchitectureRestructuring',' Architecture Restructuring').replace('PlatformDependentArchitectureConcretization',' Platform-Dependent Architecture Concretization')" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Outer Artifact" semanticCandidatesExpression="feature:methodFragment" domainClass="fragment.Artifact">
+          <subNodeMappings name="Artifact" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="fragment.Artifact">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="8" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.getsRemoved = true">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LegacySourceCode'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ArtifactTextual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ArtifactTextual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" showIcon="false" labelExpression="aql:self.eClass().name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LegacySourceCode'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('SourceCode',' Source Code')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('SourceCode',' Source Code')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LPSM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('LPSM','L-PSM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TPSM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('TPSM','T-PSM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'System'">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="7" arcHeight="7" labelSize="12" showIcon="false" labelExpression="aql:self.name">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'Platform'">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="7" arcHeight="7" labelSize="12" showIcon="false" labelExpression="aql:self.name">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'FPIM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('FPIM','F-PIM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'APIM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('APIM','A-PIM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Method Adaptation">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Output" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Inner%20Activity%20Output']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="output" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Input" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Inner%20Activity%20Input']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="input" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Input">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Artifact" precondition="aql:self.eClass().name='LegacySourceCode' or self.eClass().name='TransformedSourceCode' or self.eClass().name='LPSM' or self.eClass().name='TPSM'" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Artifact']/@subNodeMappings[name='Artifact']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:self.eClass().name = 'LPSM'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LPSM" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New LPSM Model"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'TPSM'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.TPSM" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New TPSM Model"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.TransformedSourceCode" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Transformed Source Code"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'LegacySourceCode'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LegacySourceCode" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="name"/>
+                  </subModelOperations>
+                </cases>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Activity" precondition="aql:self.eClass().name='ModelDiscovery' or self.eClass().name='Enrichment' or self.eClass().name='LanguageTransformation' or self.eClass().name='CodeGeneration'" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:self.eClass().name = 'ModelDiscovery'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.ModelDiscovery" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Model Discovery Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'Enrichment'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.Enrichment" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Enrichment Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'LanguageTransformation'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LanguageTransformation" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Language Transformation Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'CodeGeneration'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.CodeGeneration" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Code Generation Activity"/>
+                  </subModelOperations>
+                </cases>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Successor" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Activity%20Successor']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Concept Model" domainClass="situation.SituationalContextModel" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <edgeMappings name="Consists-Of" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetFinderExpression="feature:consistsOf">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Is-A" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetFinderExpression="feature:isA">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Concern" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="concept.Concern">
+          <subNodeMappings name="Programming Concept" detailDescriptions="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Create%20Influence%20Factor%20Model']" navigationDescriptions="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20Influence%20Factor%20Model']" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="concept.ProgrammingConcept">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/mefisto.design/figures/ProgrammingConcept.png" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Architectural Concept" detailDescriptions="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Create%20Influence%20Factor%20Model']" navigationDescriptions="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20Influence%20Factor%20Model']" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="concept.ArchitecturalConcept">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/mefisto.design/figures/ArchitecturalConcept.png" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" iconPath="/mefisto.design/figures/ConcernSpacer.png" labelAlignment="LEFT" roundedCorner="true" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelFormat>italic</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Concept Modeling">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Programming Concept" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept']" iconPath="/mefisto.design/figures/ProgrammingConcept.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="concept.ProgrammingConcept" referenceName="concepts">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Programming Concept">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="influence.AppliedMethodPattern" referenceName="appliedMethodPattern" variableName="appliedpattern"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Architectural Concept" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" iconPath="/mefisto.design/figures/ArchitecturalConcept.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="concept.ArchitecturalConcept" referenceName="concepts">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Architectural Concept">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="influence.AppliedMethodPattern" referenceName="appliedMethodPattern" variableName="appliedpattern"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Concern" containerMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']" iconPath="/mefisto.design/figures/Concern.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.conceptModel->first()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="concept.Concern" referenceName="concerns">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Concern"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Consists-Of" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@edgeMappings[name='Consists-Of']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="consistsOf" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Is-A" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@edgeMappings[name='Is-A']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="isA" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="description_2:TableNavigationDescription" name="Open Influence Factor Model" tableDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Local%20Influence%20Factor%20Model']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="tableName"/>
+          </ownedTools>
+          <ownedTools xsi:type="description_2:TableCreationDescription" name="Create Influence Factor Model" tableDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Local%20Influence%20Factor%20Model']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="tableName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Method Patterns">
+        <edgeMappings name="Chosen" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@additionalLayers[name='Method%20Patterns']/@containerMappings[name='Applied%20Method%20Pattern']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetFinderExpression="feature:concept">
+          <style lineStyle="dash" targetArrow="NoDecoration">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Applied Method Pattern" semanticCandidatesExpression="feature:eAllContents" domainClass="influence.AppliedMethodPattern" childrenPresentation="List">
+          <subNodeMappings name="Method Pattern Configuration" semanticCandidatesExpression="aql:self.instantiatedMethodPattern.methodPatternConfiguration" domainClass="pattern.MethodPatternConfiguration">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="feature:description" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="Undefined Method Pattern" widthComputationExpression="10" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='Reimplementation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type" iconPath="/mefisto.design/figures/MethodPatternReimplementation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='ConceptualTransformation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation')" iconPath="/mefisto.design/figures/MethodPatternConceptualTransformation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='LanguageTransformation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation')" iconPath="/mefisto.design/figures/MethodPatternLanguageTransformation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='ConceptRecognitionBasedLanguageTransformation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation').replace('Recognition', ' Recognition').replace('Based', '-Based').replace('Language', ' Language')" iconPath="/mefisto.design/figures/MethodPatternConceptRecognitionBasedLanguageTransformation.png" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='PlatformIndependentArchitectureRestructuring'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation').replace('Recognition', ' Recognition').replace('Based', '-Based').replace('Language', ' Language').replace('Independent', '-Independent').replace('Architecture', ' Architecture').replace('Restructuring', ' Restructuring')" iconPath="/mefisto.design/figures/MethodPatternPlatformIndependentArchitectureRestructuring.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='LanguageTransformationBasedReimplementation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation').replace('Recognition', ' Recognition').replace('Based', '-Based').replace('Language', ' Language').replace('Independent', '-Independent').replace('Architecture', ' Architecture').replace('Restructuring', ' Restructuring').replace('Reimplementation', ' Reimplementation')" iconPath="/mefisto.design/figures/MethodPatternLanguageTransformationBasedReimplementation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='ConceptRecognitionBasedReimplementation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation').replace('Recognition', ' Recognition').replace('Based', '-Based').replace('Language', ' Language').replace('Independent', '-Independent').replace('Architecture', ' Architecture').replace('Restructuring', ' Restructuring').replace('Reimplementation', ' Reimplementation')" iconPath="/mefisto.design/figures/MethodPatternConceptRecognitionBasedReimplementation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.chosen.type.toString()='ConceptRecognitionAndLanguageTransformationBasedReimplementation'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" labelExpression="aql:self.chosen.type.toString().replace('Transformation', ' Transformation').replace('Recognition', ' Recognition').replace('Based', '-Based').replace('Language', ' Language').replace('Independent', '-Independent').replace('Architecture', ' Architecture').replace('Restructuring', ' Restructuring').replace('Reimplementation', ' Reimplementation').replace('And', ' And')" iconPath="/mefisto.design/figures/MethodPatternConceptRecognitionAndLanguageTransformationBasedReimplementation.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="Descriptions">
+        <nodeMappings name="Programming Concept Description" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@additionalLayers[name='Descriptions']/@toolSections.0/@ownedTools[name='Edit%20Description']" semanticCandidatesExpression="feature:eAllContents" domainClass="concept.ProgrammingConcept">
+          <style xsi:type="style:NoteDescription" labelSize="12" showIcon="false" labelExpression="feature:description" labelAlignment="LEFT" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Architectural Concept Description" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@additionalLayers[name='Descriptions']/@toolSections.0/@ownedTools[name='Edit%20Description']" semanticCandidatesExpression="feature:eAllContents" domainClass="concept.ArchitecturalConcept">
+          <style xsi:type="style:NoteDescription" labelSize="12" showIcon="false" labelExpression="feature:description" labelAlignment="LEFT" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="description" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@additionalLayers[name='Descriptions']/@nodeMappings[name='Architectural%20Concept%20Description'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@additionalLayers[name='Descriptions']/@nodeMappings[name='Programming%20Concept%20Description']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Programming%20Concept'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Concept%20Model']/@defaultLayer/@containerMappings[name='Concern']/@subNodeMappings[name='Architectural%20Concept']" targetFinderExpression="aql:self">
+          <style lineStyle="dash" targetArrow="InputClosedArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Concept Modeling">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Description" inputLabelExpression="feature:description">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Method Pattern Model" domainClass="mefisto.MethodPatternModel" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="Language Transformation Pattern" navigationDescriptions="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Method%20Pattern%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Horseshoe%20Model%20']" domainClass="basic.LanguageTransformationPattern">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/mefisto.design/figures/MethodPatternLanguageTransformation.png" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Navigation">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Horseshoe Model " diagramDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Global Influence Factor Model" domainClass="situation.SituationalContextModel">
+      <ownedLineMappings name="LegacySystemInfluenceFactors" domainClass="influence.InfluenceFactorModel" headerLabelExpression="Legacy System Influence Factors">
+        <ownedSubLines name="LegacySystemInfluenceFactor" domainClass="influence.LegacySystemInfluenceFactor" headerLabelExpression="aql:self.name">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedLineMappings name="TargetSystemInfluenceFactors" domainClass="influence.InfluenceFactorModel" headerLabelExpression="Target System Influence Factors">
+        <ownedSubLines name="TargetSystemInfluenceFactor" domainClass="influence.TargetSystemInfluenceFactor" headerLabelExpression="aql:self.name">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedLineMappings name="OrganizationalInfluenceFactors" domainClass="influence.InfluenceFactorModel" headerLabelExpression="Organizational Influence Factors">
+        <ownedSubLines name="OrganizationalInfluenceFactor" domainClass="influence.OrganizationalInfluenceFactor" headerLabelExpression="aql:self.name">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedLineMappings name="ToolingInfluenceFactors" domainClass="influence.InfluenceFactorModel" headerLabelExpression="Tooling Influence Factors">
+        <ownedSubLines name="ToolingInfluenceFactor" domainClass="influence.ToolingInfluenceFactor" headerLabelExpression="aql:self.name">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Description" headerLabelExpression="Description" initialWidth="400" featureName="description" labelExpression="[if self.oclIsKindOf(situation::influence::InfluenceFactor) then self.description else '' endif/]"/>
+      <ownedColumnMappings name="Implication" headerLabelExpression="Implication" initialWidth="400" featureName="implication" labelExpression="[if self.oclIsKindOf(situation::influence::InfluenceFactor) then self.implication else '' endif/]"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Local Influence Factor Model" initialisation="true" domainClass="concept.Concept">
+      <ownedLineMappings name="Concept" domainClass="concept.Concept" semanticCandidatesExpression="aql:self">
+        <ownedSubLines name="Method Pattern Alternatives" domainClass="influence.MethodPatternAlternative" headerLabelExpression="aql:if self.concept.appliedMethodPattern.chosen.equals(self) then self.type.toString().replace('Transformation', ' Transformation') + ' (chosen)' else self.type.toString().replace('Transformation', ' Transformation')">
+          <ownedSubLines name="Influence Factor" domainClass="influence.InfluenceFactor" semanticCandidatesExpression="aql:self.influenceFactor" headerLabelExpression="aql:self.eClass().name.replace('System',' System').replace('Influence',' Influence').replace('Factor',' Factor')">
+            <defaultForeground>
+              <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </defaultForeground>
+          </ownedSubLines>
+          <create name="Create Target System Influence Factor">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="influence.TargetSystemInfluenceFactor" referenceName="influenceFactor">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="influenceFactorModel" valueExpression="aql:element.eContainer().eContainer().eContainer().eContainer().influenceFactorModel->first()"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[Name]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[Description]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="implication" valueExpression="[Implication]"/>
+            </firstModelOperation>
+          </create>
+          <create name="Create Legacy System Influence Factor">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="influence.LegacySystemInfluenceFactor" referenceName="influenceFactor">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="influenceFactorModel" valueExpression="aql:element.eContainer().eContainer().eContainer().eContainer().influenceFactorModel->first()"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[Name]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[Description]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="implication" valueExpression="[Implication]"/>
+            </firstModelOperation>
+          </create>
+          <create name="Create Tooling Influence Factor">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="influence.ToolingInfluenceFactor" referenceName="influenceFactor">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="influenceFactorModel" valueExpression="aql:element.eContainer().eContainer().eContainer().eContainer().influenceFactorModel->first()"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[Name]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[Description]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="implication" valueExpression="[Implication]"/>
+            </firstModelOperation>
+          </create>
+          <create name="Create Organizational Influence Factor">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="influence.OrganizationalInfluenceFactor" referenceName="influenceFactor">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="influenceFactorModel" valueExpression="aql:element.eContainer().eContainer().eContainer().eContainer().influenceFactorModel->first()"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[Name]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[Description]"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="implication" valueExpression="[Implication]"/>
+            </firstModelOperation>
+          </create>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create Method Pattern Alternative">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="influence.MethodPatternAlternative" referenceName="suitableMethodPattern"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" initialWidth="200" featureName="name" labelExpression="[if self.oclIsKindOf(situation::influence::InfluenceFactor) then self.name else '' endif/]"/>
+      <ownedColumnMappings name="Description" headerLabelExpression="Description" initialWidth="400" featureName="description" labelExpression="[if self.oclIsKindOf(situation::influence::InfluenceFactor) then self.description else '' endif/]"/>
+      <ownedColumnMappings name="Implication" headerLabelExpression="Implication" initialWidth="400" featureName="implication" labelExpression="[if self.oclIsKindOf(situation::influence::InfluenceFactor) then self.implication else '' endif/]"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Integrated Horseshoe Model" domainClass="pattern.TransformationPhaseFragment" enablePopupBars="true">
+      <validationSet name="MEFiSTo">
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="No input has been defined for this activity" targetClass="fragment.Activity">
+          <audits auditExpression="aql:not (self.subActivity->isEmpty()) or not (self.input->isEmpty())"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="No output has been defined for this activity" targetClass="fragment.Activity">
+          <audits auditExpression="aql:not (self.subActivity->isEmpty()) or not (self.output->isEmpty())"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="The artifact is not used as an input" targetClass="fragment.Artifact">
+          <audits auditExpression="aql:not (self.subArtifact->isEmpty()) or not (self.inputTo->isEmpty()) or (self.eClass().name='LegacySourceCode' and self.getsRemoved) or (self.eClass().name='TransformedSourceCode')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="Model Discovery can only output an LPSM" targetClass="transformation.ModelDiscovery">
+          <audits auditExpression="aql:self.output->forAll(inp | inp.eClass().name = 'LPSM')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="The input to Model Discovery can only be Legacy Source Code, a System or a Platform" targetClass="transformation.ModelDiscovery">
+          <audits auditExpression="aql:self.input->forAll(inp | inp.eClass().name = 'LegacySourceCode' or inp.eClass().name = 'System' or inp.eClass().name = 'Platform')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="This artifact is not an output of any activity" targetClass="fragment.Artifact">
+          <audits auditExpression="aql:not (self.subArtifact->isEmpty()) or not (self.outputFrom->isEmpty()) or (self.eClass().name='LegacySourceCode') or (self.eClass().name='System') or (self.eClass().name='Platform')"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="Language Transformation can only output a TPSM" targetClass="transformation.LanguageTransformation">
+          <audits auditExpression="aql:self.output->forAll(inp | inp.eClass().name = 'TPSM')"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="Platform" semanticCandidatesExpression="false" domainClass="transformation.Platform">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="System" semanticCandidatesExpression="false" domainClass="transformation.System">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Inner Activity Input" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subNodeMappings[name='Referenced%20Inner%20Activity'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subContainerMappings[name='Referenced%20Inner%20Container%20Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subContainerMappings[name='Referenced%20Inner%20Container%20Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subNodeMappings[name='Referenced%20Inner%20Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subContainerMappings[name='Referenced%20Inner%20Container%20Artifact']/@subNodeMappings[name='Referenced%20Inner%20Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@nodeMappings[name='Platform'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@nodeMappings[name='System']" targetFinderExpression="feature:input">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Inner Activity Output" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subNodeMappings[name='Referenced%20Inner%20Activity'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subContainerMappings[name='Referenced%20Inner%20Container%20Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subNodeMappings[name='Referenced%20Inner%20Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subContainerMappings[name='Referenced%20Inner%20Container%20Artifact'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Artifact']/@subContainerMappings[name='Referenced%20Inner%20Container%20Artifact']/@subNodeMappings[name='Referenced%20Inner%20Artifact']" targetFinderExpression="feature:output">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Activity Successor" deletionDescription="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Input']" sourceMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subNodeMappings[name='Referenced%20Inner%20Activity'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subContainerMappings[name='Referenced%20Inner%20Container%20Activity']" targetMapping="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subNodeMappings[name='Referenced%20Inner%20Activity'] //@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Referenced%20Outer%20Activity']/@subContainerMappings[name='Referenced%20Inner%20Container%20Activity']" targetFinderExpression="feature:predecessor">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Referenced Outer Activity" semanticCandidatesExpression="aql:self.eAllContents()->select(a:Activity | not a.referencedSubActivity->isEmpty())" domainClass="fragment.Activity">
+          <subNodeMappings name="Referenced Inner Activity" preconditionExpression="aql:self.subActivity->isEmpty()" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:referencedSubActivity" domainClass="fragment.Activity">
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='Automatic'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivityAutomatic.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='Manual'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivityManual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.type.toString()='SemiAutomatic'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ActivitySemiAutomatic.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <subContainerMappings name="Referenced Inner Container Activity" preconditionExpression="aql:not self.subActivity->isEmpty()" semanticCandidatesExpression="feature:referencedSubActivity" domainClass="fragment.Activity">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('Discovery',' Discovery').replace('Comprehension',' Comprehension').replace('Generation',' Generation').replace('Transformation',' Transformation')" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:ShapeContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('Discovery',' Discovery').replace('Comprehension',' Comprehension').replace('Generation',' Generation').replace('Transformation',' Transformation').replace('PlatformIndependent','Platform-Independent').replace('Architecture',' Architecture').replace('Recovery',' Recovery').replace('Concretization',' Concretization').replace('Restructuring',' Restructuring').replace('Enrichment',' Enrichment').replace('PlatformDependent','Platform-Dependent')" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Referenced Outer Artifact" semanticCandidatesExpression="aql:self.eAllContents()->select(a:Artifact | not a.referencedSubArtifact->isEmpty())" domainClass="fragment.Artifact">
+          <subNodeMappings name="Referenced Inner Artifact" preconditionExpression="aql:self.subArtifact->isEmpty()" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:referencedSubArtifact" domainClass="fragment.Artifact">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="8" height="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.getsRemoved = true">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LegacySourceCode'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ArtifactTextual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="12" labelPosition="node" resizeKind="NSEW" workspacePath="/mefisto.design/figures/ArtifactTextual.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.eClass().name = 'System'">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <subContainerMappings name="Referenced Inner Container Artifact" preconditionExpression="aql:not self.subArtifact->isEmpty()" semanticCandidatesExpression="feature:referencedSubArtifact" domainClass="fragment.Artifact">
+            <subNodeMappings name="Referenced Inner Artifact" preconditionExpression="aql:self.subArtifact->isEmpty()" labelDirectEdit="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:subArtifact" domainClass="fragment.Artifact">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="8" height="5">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql:self.getsRemoved = true">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" widthComputationExpression="8" heightComputationExpression="5">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" showIcon="false" labelExpression="aql:self.eClass().name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LegacySourceCode'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('SourceCode',' Source Code')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('SourceCode',' Source Code')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LPSM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('LPSM','L-PSM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'TPSM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('TPSM','T-PSM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'System'">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="7" arcHeight="7" labelSize="12" showIcon="false" labelExpression=" " hideLabelByDefault="true" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'Platform'">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="7" arcHeight="7" labelSize="12" showIcon="false" labelExpression="aql:self.name">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'FPIM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('FPIM','F-PIM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'APIM'">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="12" showIcon="false" labelExpression="aql:self.eClass().name.replace('APIM','A-PIM')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Method Adaptation">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Output" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Inner%20Activity%20Input']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="output" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Input" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Inner%20Activity%20Input']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="input" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Input">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Artifact" precondition="aql:self.eClass().name='LegacySourceCode' or self.eClass().name='TransformedSourceCode' or self.eClass().name='LPSM' or self.eClass().name='TPSM'" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Artifact']/@subNodeMappings[name='Artifact']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:self.eClass().name = 'LPSM'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LPSM" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New LPSM Model"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'TPSM'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.TPSM" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New TPSM Model"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'TransformedSourceCode'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.TransformedSourceCode" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Transformed Source Code"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'LegacySourceCode'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LegacySourceCode" referenceName="subArtifact">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="name"/>
+                  </subModelOperations>
+                </cases>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Activity" precondition="aql:self.eClass().name='ModelDiscovery' or self.eClass().name='Enrichment' or self.eClass().name='LanguageTransformation' or self.eClass().name='CodeGeneration'" nodeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Horseshoe%20Model']/@defaultLayer/@containerMappings[name='Outer%20Activity']/@subNodeMappings[name='Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:self.eClass().name = 'ModelDiscovery'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.ModelDiscovery" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Model Discovery Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'Enrichment'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.Enrichment" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Enrichment Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'LanguageTransformation'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.LanguageTransformation" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Language Transformation Activity"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:self.eClass().name = 'CodeGeneration'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="transformation.CodeGeneration" referenceName="subActivity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Code Generation Activity"/>
+                  </subModelOperations>
+                </cases>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Define Activity Successor" edgeMappings="//@ownedViewpoints[name='MEFiSTo']/@ownedRepresentations[name='Integrated%20Horseshoe%20Model']/@defaultLayer/@edgeMappings[name='Activity%20Successor']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="MMM" modelFileExtension="*.mmm">
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Concern Model" titleExpression="[self.eContainer().oclAsType(MefistoModel).name + ' concept model'/]" domainClass="mefisto.SituationalContextModel" initialHeaderColumnWidth="3">
+      <ownedLineMappings name="Concern" domainClass="mconcept.Concern" headerLabelExpression="['Concern'/]">
+        <defaultForeground labelSize="11">
+          <labelFormat>bold</labelFormat>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+        <ownedSubLines name="ConceptEntity" domainClass="mconcept.ConceptEntity" headerLabelExpression="['Concept'/]">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+        <create name="Create Concept Type" forceRefresh="true">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="container">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mconcept.ConceptType" referenceName="conceptEntities">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Concept"/>
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="instance">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mcontext.LegacySystemRealization" referenceName="legacySystemRealization" variableName="legacyrealizationinstance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="Undefined"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mcontext.TargetSystemRealization" referenceName="targetSystemRealization" variableName="targetsystemrealization">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="Undefined"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mconcept.AppliedMethodPattern" referenceName="appliedMethodPattern" variableName="appliedMethodPattern"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create Concern" forceRefresh="true">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="container">
+          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mconcept.Concern" referenceName="concerns" variableName="concern">
+            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Concern"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="feature:name"/>
+      <ownedColumnMappings name="Description" headerLabelExpression="Description" initialWidth="5" featureName="description" labelExpression="feature:description"/>
+      <ownedColumnMappings name="Source Realization" headerLabelExpression="Source Realization" featureName="name" labelExpression="[self.legacySystemRealization.description/]">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="[self.legacySystemRealization/]">
+            <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="Target Realization" headerLabelExpression="Target Realization" featureName="name" labelExpression="[self.targetSystemRealization.description/]">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="[self.targetSystemRealization/]">
+            <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="AppliedMethodPattern" headerLabelExpression="Applied Method Pattern" featureName="appliedMethodPattern" labelExpression="Applied Method Pattern"/>
+      <ownedColumnMappings name="Dependency" headerLabelExpression="Dependency" featureName="name" labelExpression="[if not self.dependencies->isEmpty() then self.dependencies->first().type + ' ' + self.dependencies->first().target.name else '' endif/]"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Method Pattern Alternatives Model" titleExpression="[self.eContainer().oclAsType(MefistoModel).name + ' method pattern alternatives model'/]" domainClass="mefisto.SituationalContextModel">
+      <ownedLineMappings name="ConceptEntity" domainClass="mconcept.ConceptEntity" headerLabelExpression="['Concept'/]">
+        <defaultForeground labelSize="11">
+          <labelFormat>bold</labelFormat>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+        <ownedSubLines name="Method Pattern Alternative" domainClass="mconcept.MethodPatternAlternative" headerLabelExpression="['Method Pattern Alternative'/]">
+          <defaultForeground labelSize="11">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </defaultForeground>
+        </ownedSubLines>
+        <create name="Create Method Pattern Alternative" forceRefresh="true">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="container">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mconcept.MethodPatternAlternative" referenceName="applicableMethodPatterns"/>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="feature:name"/>
+      <ownedColumnMappings name="Pro" headerLabelExpression="Pro" featureName="pros"/>
+      <ownedColumnMappings name="Contra" headerLabelExpression="Contra" featureName="cons"/>
+      <ownedColumnMappings name="Chosen" headerLabelExpression="Chosen" featureName="pros" labelExpression="[self.eContainer().oclAsType(ConceptEntity).appliedMethodPattern.chosen=self/]">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="Rationale" headerLabelExpression="Rationale" featureName="name" labelExpression="[if self.oclIsTypeOf(MethodPatternAlternative) and self.eContainer().oclAsType(ConceptEntity).appliedMethodPattern.chosen=self then self.eContainer().oclAsType(ConceptEntity).appliedMethodPattern.rationale else '' endif/]"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Concept Dependency Diagram" domainClass="mconcept.ConceptModel">
+      <defaultLayer name="Default">
+        <nodeMappings name="ConceptType" domainClass="mconcept.ConceptType">
+          <style xsi:type="style:SquareDescription" labelSize="11" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ConceptInstance" domainClass="mconcept.ConceptInstance">
+          <style xsi:type="style:SquareDescription" labelSize="11" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="InstanceOf" sourceMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptInstance']" targetMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptType']" targetFinderExpression="feature:type">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="instanceOf">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptType'] //@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptInstance']" targetMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptType'] //@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptInstance']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="mconcept.Dependency" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="dependency">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Editor">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Dependency" edgeMappings="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Concept%20Dependency%20Diagram']/@defaultLayer/@edgeMappings[name='Dependency']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mconcept.Dependency" referenceName="dependencies">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Method Element Diagram" domainClass="mconcept.ConceptEntity">
+      <defaultLayer name="Default">
+        <nodeMappings name="ConceptEntity" domainClass="mconcept.ConceptEntity">
+          <style xsi:type="style:SquareDescription" labelSize="11" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ContentElement" domainClass="uma.ContentElement">
+          <style xsi:type="style:SquareDescription" labelSize="11" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="MethodElement" sourceMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Method%20Element%20Diagram']/@defaultLayer/@nodeMappings[name='ConceptEntity']" targetMapping="//@ownedViewpoints[name='MMM']/@ownedRepresentations[name='Method%20Element%20Diagram']/@defaultLayer/@nodeMappings[name='ContentElement']" targetFinderExpression="feature:methodElements">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/pattern"
+            class="miml.pattern.PatternPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/pattern/basic"
+            class="miml.pattern.basic.BasicPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/pattern/composed"
+            class="miml.pattern.composed.ComposedPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/mefisto"
+            class="miml.mefisto.MefistoPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/fragment"
+            class="miml.fragment.FragmentPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/fragment/preparation"
+            class="miml.fragment.preparation.PreparationPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/fragment/transformation"
+            class="miml.fragment.transformation.TransformationPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/core"
+            class="miml.core.CorePackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/situation"
+            class="miml.situation.SituationPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/situation/influence"
+            class="miml.situation.influence.InfluencePackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mefisto -->
+      <package
+            uri="http://de.upb.grieger/miml/situation/concept"
+            class="miml.situation.concept.ConceptPackage"
+            genModel="model/mefisto.genmodel"/>
+   </extension>
+
+</plugin>

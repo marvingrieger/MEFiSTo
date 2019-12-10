@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/mefisto.metamodel/src" modelPluginID="mefisto.metamodel"
+    modelName="Mefisto" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>mefisto.ecore</foreignModel>
+  <genPackages prefix="Miml" disposableProviderFactory="true" ecorePackage="mefisto.ecore#/">
+    <nestedGenPackages prefix="Pattern" basePackage="miml" disposableProviderFactory="true"
+        ecorePackage="mefisto.ecore#//pattern">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="mefisto.ecore#//pattern/MethodPatternState">
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//pattern/MethodPatternState/Instantiated"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//pattern/MethodPatternState/Configured"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//pattern/MethodPatternState/TransformationPhaseFragmentsInstantiated"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//pattern/MethodPatternState/Merged"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//pattern/MethodPatternState/PreparationPhaseFragmentsInstantiated"/>
+      </genEnums>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/MethodPattern">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPattern/preparationphasefragments"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPattern/transformationphasefragments"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPattern/appliedMethodPattern"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPattern/methodPatternConfiguration"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPattern/methodPatternMergeView"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPattern/state"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/MethodPatternConfiguration">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/discoverPlatform"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/discoverSystem"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichLPSM"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/removeCode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichFPIM"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/restructureFPIM"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichAPIM"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPatternConfiguration/methodpattern"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/legacyRealizationName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/targetRealizationName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/discoverPlatformName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/discoverSystemName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/removeCodeName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichLPSMName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichFPIMName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/enrichAPIMName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//pattern/MethodPatternConfiguration/restructureFPIMName"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/TransformationPhaseFragment">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/TransformationPhaseFragment/methodFragment"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/PreparationPhaseFragment">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/PreparationPhaseFragment/methodFragment"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/TransformationMethodSpecification">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//pattern/TransformationMethodSpecification/instantiatedMethodPattern"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//pattern/MethodPatternMergeView">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//pattern/MethodPatternMergeView/mergedMethodPatterns"/>
+      </genClasses>
+      <nestedGenPackages prefix="Basic" basePackage="miml.pattern" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//pattern/basic">
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/LanguageTransformationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/ConceptualTransformationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/ReimplementationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/CodeRemovalPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/PlatformDependentArchitectureRestructuringPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/basic/PlatformIndependentArchitectureRestructuringPattern"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Composed" basePackage="miml.pattern" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//pattern/composed">
+        <genClasses ecoreClass="mefisto.ecore#//pattern/composed/LanguageTransformationBasedReimplementationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/composed/ConceptRecognitionBasedReimplementationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/composed/ConceptRecognitionBasedLanguageTransformationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/composed/ConceptRecognitionAndLanguageTransformationBasedReimplementationPattern"/>
+        <genClasses ecoreClass="mefisto.ecore#//pattern/composed/ArchitectureRestructuringPattern"/>
+      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Mefisto" basePackage="miml" disposableProviderFactory="true"
+        ecorePackage="mefisto.ecore#//mefisto">
+      <genClasses ecoreClass="mefisto.ecore#//mefisto/MefistoModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//mefisto/MefistoModel/situationalContextModel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//mefisto/MefistoModel/transformationMethodSpecification"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Fragment" basePackage="miml" disposableProviderFactory="true"
+        ecorePackage="mefisto.ecore#//fragment">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="mefisto.ecore#//fragment/ActivityType">
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//fragment/ActivityType/Automatic"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//fragment/ActivityType/SemiAutomatic"/>
+        <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//fragment/ActivityType/Manual"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="mefisto.ecore#//fragment/Artifact">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/subArtifact"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/superArtifact"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/inputTo"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/outputFrom"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/referencedSubArtifact"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Artifact/referencedSuperArtifact"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mefisto.ecore#//fragment/Activity">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/input"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/role"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/tool"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/subActivity"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/superActivity"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/output"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/referencedSubActivity"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/referencedSuperActivity"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/successor"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/Activity/predecessor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//fragment/Activity/type"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mefisto.ecore#//fragment/MethodFragment">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//fragment/MethodFragment/projectIndependentGUID"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//fragment/MethodFragment/projectSpecificGuid"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/MethodFragment/preparationphasefragment"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//fragment/MethodFragment/transformationphasefragment"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mefisto.ecore#//fragment/Tool"/>
+      <genClasses image="false" ecoreClass="mefisto.ecore#//fragment/Role"/>
+      <nestedGenPackages prefix="Preparation" basePackage="miml.fragment" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//fragment/preparation">
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/Tool"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ToolDeveloper"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/MetamodelDefinition"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/MetamodelProfileDefinition"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ToolDefinition"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ModelTransformationRulesDefinition"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/CodeGenerationRulesDefinition"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ReimplementationGuidanceSpecification"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/Metamodel"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/MetamodelProfile"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ModelTransformationRules"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/CodeGenerationRules"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/preparation/ReimplementationGuidance"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Transformation" basePackage="miml.fragment" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//fragment/transformation">
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/Reimplementation"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/ModelDiscovery"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/ProgramComprehension"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/Concretization"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/CodeGeneration"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/LanguageTransformation"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/PlatformIndependentArchitectureRecovery"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/ArchitectureRestructuring"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/LPSM"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/TPSM"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/LegacySourceCode">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//fragment/transformation/LegacySourceCode/getsRemoved"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/TransformedSourceCode"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/FPIM"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/APIM"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/LPSMEnrichment"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/Restructuring"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/Platform"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/System"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/SoftwareDeveloper"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/SystemExpert"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/PlatformIndependentArchitectureConcretization"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/ModelTransformationEngine"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/CodeGenerationEngine"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/Parser"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/FPIMEnrichment"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/APIMEnrichment"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/PlatformDependentArchitectureRecovery"/>
+        <genClasses ecoreClass="mefisto.ecore#//fragment/transformation/PlatformDependentArchitectureConcretization"/>
+      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Core" basePackage="miml" disposableProviderFactory="true"
+        ecorePackage="mefisto.ecore#//core">
+      <genClasses ecoreClass="mefisto.ecore#//core/MimlElement">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//core/MimlElement/trace"/>
+        <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mefisto.ecore#//core/MimlElement/description"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//core/MimlNamedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//core/MimlNamedElement/name"/>
+      </genClasses>
+      <genClasses ecoreClass="mefisto.ecore#//core/Trace">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mefisto.ecore#//core/Trace/mimlelement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Situation" basePackage="miml" disposableProviderFactory="true"
+        ecorePackage="mefisto.ecore#//situation">
+      <genClasses ecoreClass="mefisto.ecore#//situation/SituationalContextModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//situation/SituationalContextModel/conceptModel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//situation/SituationalContextModel/influenceFactorModel"/>
+      </genClasses>
+      <nestedGenPackages prefix="Influence" basePackage="miml.situation" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//situation/influence">
+        <genEnums typeSafeEnumCompatible="false" ecoreEnum="mefisto.ecore#//situation/influence/MethodPatternType">
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/LanguageTransformation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/ConceptualTransformation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/Reimplementation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/CodeRemoval"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/PlatformDependentArchitectureRestructuring"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/PlatformIndependentArchitectureRestructuring"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/LanguageTransformationBasedReimplementation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/ConceptRecognitionBasedReimplementation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/ConceptRecognitionBasedLanguageTransformation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/ConceptRecognitionAndLanguageTransformationBasedReimplementation"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/influence/MethodPatternType/ArchitectureRestructuring"/>
+        </genEnums>
+        <genClasses image="false" ecoreClass="mefisto.ecore#//situation/influence/InfluenceFactor">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/InfluenceFactor/influencedMethodPattern"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/InfluenceFactor/influenceFactorModel"/>
+          <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/influence/InfluenceFactor/implication"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/LegacySystemInfluenceFactor"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/TargetSystemInfluenceFactor"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/OrganizationalInfluenceFactor"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/ToolingInfluenceFactor"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/InfluenceFactorModel">
+          <genFeatures children="true" createChild="true" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/InfluenceFactorModel/influenceFactor"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/MethodPatternAlternative">
+          <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/influence/MethodPatternAlternative/pros"/>
+          <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/influence/MethodPatternAlternative/cons"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/MethodPatternAlternative/influenceFactor"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/influence/MethodPatternAlternative/type"/>
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/MethodPatternAlternative/concept"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/MethodPatternAlternative/chosen"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//situation/influence/AppliedMethodPattern">
+          <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/influence/AppliedMethodPattern/rationale"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/AppliedMethodPattern/concept"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/AppliedMethodPattern/chosen"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/influence/AppliedMethodPattern/instantiatedMethodPattern"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Concept" basePackage="miml.situation" disposableProviderFactory="true"
+          ecorePackage="mefisto.ecore#//situation/concept">
+        <genEnums typeSafeEnumCompatible="false" ecoreEnum="mefisto.ecore#//situation/concept/ConceptClass">
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/concept/ConceptClass/SharedConcept"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/concept/ConceptClass/LegacyConcept"/>
+          <genEnumLiterals ecoreEnumLiteral="mefisto.ecore#//situation/concept/ConceptClass/TargetConcept"/>
+        </genEnums>
+        <genClasses ecoreClass="mefisto.ecore#//situation/concept/LanguageConcept"/>
+        <genClasses image="false" ecoreClass="mefisto.ecore#//situation/concept/Concept">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concept/consistsOf"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mefisto.ecore#//situation/concept/Concept/conceptClass"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concept/isA"/>
+          <genFeatures children="true" createChild="true" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concept/suitableMethodPattern"/>
+          <genFeatures children="true" createChild="true" propertySortChoices="true"
+              ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concept/appliedMethodPattern"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//situation/concept/Concern">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concern/concepts"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/Concern/concerns"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="mefisto.ecore#//situation/concept/AbstractConcept"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/concept/ArchitecturalConcept"/>
+        <genClasses ecoreClass="mefisto.ecore#//situation/concept/ConceptModel">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mefisto.ecore#//situation/concept/ConceptModel/concerns"/>
+        </genClasses>
+        <genClasses ecoreClass="mefisto.ecore#//situation/concept/ProgrammingConcept"/>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
